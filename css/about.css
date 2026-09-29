@@ -8,41 +8,75 @@
 /* =============================== HERO ============================== */
 .ab-hero {
     position: relative;
-    min-height: calc(100vh - var(--header-h));
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    align-items: stretch;
+    padding-block: clamp(4rem, 8vw, 7rem) clamp(4rem, 8vw, 7rem);
     border-bottom: 1px solid var(--rule);
     overflow: hidden;
+    background: var(--ink-900);
+    color: var(--paper);
+    min-height: clamp(520px, 75vh, 720px);
+    display: flex;
+    align-items: center;
+}
+
+.ab-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+
+.ab-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        105deg,
+        rgba(6, 42, 30, 0.93) 0%,
+        rgba(6, 42, 30, 0.85) 50%,
+        rgba(6, 42, 30, 0.60) 100%
+    );
+    pointer-events: none;
+}
+
+.ab-hero__container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 .ab-hero__copy {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem) clamp(4rem, 8vw, 7rem) var(--gutter);
+    max-width: 680px;
+}
+
+.ab-hero__copy .eyebrow {
+    color: #10B981 !important;
+    font-weight: 600;
 }
 
 .ab-hero__title {
     font-size: clamp(2.4rem, 5.6vw, 4.6rem);
     line-height: 1.02;
     letter-spacing: -.028em;
-    font-variation-settings: "opsz" 120;
-    max-width: 15ch;
+    color: #FFFFFF;
+}
+
+.ab-hero__title span {
+    display: block;
 }
 
 .ab-hero__title em {
     font-style: italic;
-    color: var(--navy-600);
-    font-variation-settings: "opsz" 144;
+    color: #10B981;
 }
 
 .ab-hero__lede {
     margin-top: 1.9rem;
     font-size: clamp(1rem, 1.3vw, 1.15rem);
     line-height: 1.68;
-    color: var(--navy-800);
-    max-width: 50ch;
+    color: #E2ECE5;
+    max-width: 54ch;
 }
 
 .ab-hero__actions {
@@ -52,10 +86,35 @@
     gap: .85rem;
 }
 
+.ab-hero__actions .btn--solid {
+    background: #10B981;
+    color: #062A1E;
+    border-color: #10B981;
+    font-weight: 700;
+}
+
+.ab-hero__actions .btn--solid:hover {
+    background: #059669;
+    border-color: #059669;
+    color: #FFFFFF;
+}
+
+.ab-hero__actions .btn--outline {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+    border-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+.ab-hero__actions .btn--outline:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #FFFFFF;
+}
+
 .ab-hero__meta {
     margin-top: 3.5rem;
     padding-top: 1.75rem;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem 2rem;
@@ -67,55 +126,14 @@
     font-size: .625rem;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--navy-400);
+    color: #9CA3AF;
     margin-bottom: .45rem;
 }
 
 .ab-hero__meta dd {
     font-size: .875rem;
-    color: var(--ink-900);
+    color: #F3F4F6;
     line-height: 1.5;
-}
-
-.ab-hero__media {
-    position: relative;
-    background: var(--paper-dim);
-    border-left: 1px solid var(--rule);
-    overflow: hidden;
-}
-
-.ab-hero__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.02);
-    transition: transform 1.6s var(--ease-out);
-}
-
-.ab-hero__media:hover img {
-    transform: scale(1.05);
-}
-
-.ab-hero__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(1, 7, 56, 0) 55%, rgba(1, 7, 56, .55) 100%);
-    pointer-events: none;
-}
-
-.ab-hero__caption {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 1.4rem 1.5rem;
-    color: var(--paper);
-    font-family: var(--font-mono);
-    font-size: .625rem;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    z-index: 2;
 }
 
 /* ========================== FIRM HISTORY =========================== */

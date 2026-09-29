@@ -67,13 +67,18 @@
             display: inline-flex;
             align-items: center;
             gap: .85rem;
+            transition: transform .35s var(--ease-out);
+        }
+
+        .err__brand:hover {
+            transform: scale(1.04);
         }
 
         .err__brand img {
             width: 140px;
             height: 38px;
             object-fit: contain;
-            filter: brightness(0) saturate(100%) invert(14%) sepia(43%) saturate(1743%) hue-rotate(202deg) brightness(94%) contrast(92%) !important;
+            filter: invert(52%) sepia(69%) saturate(1637%) hue-rotate(124deg) brightness(96%) contrast(87%) !important;
         }
 
         .err__brand .brand__name {
@@ -167,7 +172,7 @@
         .err__actions {
             display: flex;
             flex-wrap: wrap;
-            gap: .85rem;
+            gap: 1rem;
             justify-content: center;
             width: 100%;
         }
@@ -179,55 +184,61 @@
             justify-content: center;
             gap: .75rem;
             min-height: 52px;
-            padding: .95rem 2rem;
-            font-family: var(--font-mono);
-            font-size: .6875rem;
-            letter-spacing: .18em;
-            text-transform: uppercase;
+            padding: .95rem 2.2rem;
+            font-family: var(--font-body);
+            font-size: .9375rem;
+            font-weight: 600;
+            letter-spacing: .02em;
+            border-radius: 8px;
             border: 1px solid transparent;
-            transition: background-color .4s var(--ease-out),
-                color .4s var(--ease-out),
-                border-color .4s var(--ease-out),
-                transform .5s var(--ease-out);
+            cursor: pointer;
+            transition: background-color .35s var(--ease-out),
+                color .35s var(--ease-out),
+                border-color .35s var(--ease-out),
+                transform .35s var(--ease-out),
+                box-shadow .35s var(--ease-out);
         }
 
         .err__btn i {
-            font-size: .72rem;
-            transition: transform .45s var(--ease-out);
+            font-size: .9rem;
+            transition: transform .35s var(--ease-out);
         }
 
-        /* Home — arrow moves right, button drifts right */
+        /* Home — Return to Home button */
         .err__btn--home {
             background: var(--navy-600);
             color: var(--paper);
             border-color: var(--navy-600);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
         }
 
         .err__btn--home:hover {
             background: var(--ink-900);
             border-color: var(--ink-900);
-            transform: translateX(4px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 42, 30, 0.3);
         }
 
         .err__btn--home:hover i {
-            transform: translateX(7px);
-        }
-
-        /* Back — arrow moves left, button drifts left (opposite direction) */
-        .err__btn--back {
-            background: transparent;
-            color: var(--navy-600);
-            border-color: var(--navy-600);
-        }
-
-        .err__btn--back:hover {
-            background: var(--navy-600);
-            color: var(--paper);
             transform: translateX(-4px);
         }
 
+        /* Back — Go Back button */
+        .err__btn--back {
+            background: transparent;
+            color: var(--ink-900);
+            border-color: var(--rule);
+        }
+
+        .err__btn--back:hover {
+            background: rgba(16, 185, 129, 0.08);
+            color: var(--navy-600);
+            border-color: var(--navy-600);
+            transform: translateY(-2px);
+        }
+
         .err__btn--back:hover i {
-            transform: translateX(-7px);
+            transform: translateX(-4px);
         }
 
         .err__btn:focus-visible {
@@ -238,7 +249,7 @@
         /* ---------------------------- FOOTNOTE ---------------------------- */
         .err__foot {
             font-family: var(--font-mono);
-            font-size: .5625rem;
+            font-size: .625rem;
             letter-spacing: .22em;
             text-transform: uppercase;
             color: var(--navy-400);
@@ -279,8 +290,7 @@
 
         <!-- Logo -->
         <a class="err__brand" href="index.html" aria-label="Stackly Renewable Energy — home">
-            <img src="logo.webp" alt="">
-            
+            <img src="logo.webp" alt="Stackly Energy logo">
         </a>
 
         <!-- Content -->
@@ -288,11 +298,11 @@
             <p class="err__code" aria-hidden="true">4<span>0</span>4</p>
 
             <h1 class="err__title">
-                This page is not <em>in the register.</em>
+                This page is not <em>in the grid register.</em>
             </h1>
 
             <p class="err__lede">
-                The address you followed does not resolve to a document we hold. It may
+                The address you followed does not resolve to an active energy document or desk. It may
                 have been moved, renamed, or it may never have existed. Nothing has been
                 logged against your session.
             </p>
@@ -303,14 +313,14 @@
         <!-- Actions -->
         <div class="err__actions">
             <a class="err__btn err__btn--home" href="index.html">
-                Back to Home <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Return to Home
             </a>
             <button class="err__btn err__btn--back" id="goBack" type="button">
-                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Go Back
+                <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Go Back
             </button>
         </div>
 
-        <p class="err__foot">Stackly Renewable Energy · Salem · Tamil Nadu</p>
+        <p class="err__foot">Stackly Renewable Energy · Clean Hub · Salem, Tamil Nadu</p>
 
     </main>
 
@@ -322,18 +332,8 @@
 
             if (backBtn) {
                 backBtn.addEventListener("click", function () {
-                    var hasHistory = window.history.length > 1;
-                    var hasReferrer = document.referrer && document.referrer !== "";
-
-                    /* Only step back if we actually have somewhere to step back to,
-                       and it did not come from another origin. Otherwise fall back
-                       to the home page. */
-                    if (hasHistory && hasReferrer) {
-                        try {
-                            window.history.back();
-                        } catch (err) {
-                            window.location.href = "index.html";
-                        }
+                    if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+                        window.history.back();
                     } else {
                         window.location.href = "index.html";
                     }

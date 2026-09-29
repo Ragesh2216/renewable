@@ -39,7 +39,7 @@
                     <li><a href="index.html" class="is-active">Home</a></li>
                     <li><a href="html/about.html">About</a></li>
                     <li><a href="html/services.html">Services</a></li>
-                    <li><a href="html/blog.html">Journal</a></li>
+                    <li><a href="html/blog.html">Blog</a></li>
                     <li><a href="html/contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -69,7 +69,7 @@
             <a href="index.html" style="--i:0">Home</a>
             <a href="html/about.html" style="--i:1">About</a>
             <a href="html/services.html" style="--i:2">Services</a>
-            <a href="html/blog.html" style="--i:3">Journal</a>
+            <a href="html/blog.html" style="--i:3">Blog</a>
             <a href="html/contact.html" style="--i:4">Contact</a>
             <a href="html/login.html" class="menu-overlay__login" style="--i:5">
                 Login <i class="fa-solid fa-arrow-right"></i>
@@ -83,7 +83,16 @@
 
         <!-- ============================== HERO ============================== -->
         <section class="hero">
-            <div class="hero__grid">
+            <!-- Background Image Slideshow -->
+            <div class="hero__bg-slides" id="heroSlides">
+                <div class="hero__slide is-active" style="background-image: url('assets/photo_149736675403_1.webp');" aria-label="Solar PV Park background"></div>
+                <div class="hero__slide" style="background-image: url('assets/photo_152475863162_1.webp');" aria-label="Wind Turbines background"></div>
+                <div class="hero__slide" style="background-image: url('assets/photo_1554224155-6.webp');" aria-label="BESS Storage background"></div>
+                <div class="hero__slide" style="background-image: url('assets/photo_148640614692.webp');" aria-label="Substation Grid background"></div>
+            </div>
+            <div class="hero__overlay"></div>
+
+            <div class="shell hero__container">
 
                 <div class="hero__copy">
                     <p class="eyebrow slide slide-up" style="--i:0">Renewable Infrastructure &amp; Energy Management</p>
@@ -115,42 +124,23 @@
                     </dl>
                 </div>
 
-                <div class="hero__media slide slide-right" style="--i:1">
-                    <div class="hero__slides" id="heroSlides">
-                        <figure class="hero__slide is-active">
-                            <img src="assets/photo_149736675403_1.webp"
-                                alt="Modern clean energy research lab with daylight">
-                        </figure>
-                        <figure class="hero__slide">
-                            <img src="assets/photo_152475863162_1.webp"
-                                alt="Renewable energy engineers analyzing solar array layouts">
-                        </figure>
-                        <figure class="hero__slide">
-                            <img src="assets/photo_1554224155-6.webp"
-                                alt="Close up view of grid control telemetry interface">
-                        </figure>
-                        <figure class="hero__slide">
-                            <img src="assets/photo_148640614692.webp"
-                                alt="Sustainable solar energy building facade">
-                        </figure>
-                    </div>
-
-                    <div class="hero__media-foot">
-                        <div class="hero__dots" id="heroDots" role="tablist" aria-label="Hero images">
-                            <button class="hero__dot is-active" role="tab" aria-selected="true"
-                                aria-label="Show image one"></button>
-                            <button class="hero__dot" role="tab" aria-selected="false"
-                                aria-label="Show image two"></button>
-                            <button class="hero__dot" role="tab" aria-selected="false"
-                                aria-label="Show image three"></button>
-                            <button class="hero__dot" role="tab" aria-selected="false"
-                                aria-label="Show image four"></button>
-                        </div>
-                        <span class="hero__counter mono" id="heroCounter">01 / 04</span>
-                    </div>
-                </div>
-
             </div>
+
+            <!-- Background Slide Controls -->
+            <div class="hero__controls-foot slide slide-right" style="--i:1">
+                <div class="hero__dots" id="heroDots" role="tablist" aria-label="Hero background images">
+                    <button class="hero__dot is-active" role="tab" aria-selected="true"
+                        aria-label="Show background image one"></button>
+                    <button class="hero__dot" role="tab" aria-selected="false"
+                        aria-label="Show background image two"></button>
+                    <button class="hero__dot" role="tab" aria-selected="false"
+                        aria-label="Show background image three"></button>
+                    <button class="hero__dot" role="tab" aria-selected="false"
+                        aria-label="Show background image four"></button>
+                </div>
+                <span class="hero__counter mono" id="heroCounter">01 / 04</span>
+            </div>
+
         </section>
 
         <!-- ========================== TRUST STRIP ========================== -->
@@ -707,7 +697,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="html/about.html">About Us</a></li>
                         <li><a href="html/services.html">Services</a></li>
-                        <li><a href="html/blog.html">Journal</a></li>
+                        <li><a href="html/blog.html">Blog</a></li>
                         <li><a href="html/contact.html">Contact</a></li>
                         <li><a href="html/login.html">Portal Login</a></li>
                     </ul>

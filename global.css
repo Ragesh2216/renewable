@@ -421,7 +421,10 @@ time {
     flex: none;
 }
 
-.brand img {
+.brand img,
+.on-dark img[src*="logo"],
+.footer__brand img,
+.site-footer img {
     width: 140px;
     height: 38px;
     object-fit: contain;
@@ -429,12 +432,9 @@ time {
     transition: filter .35s var(--ease-out), transform .35s var(--ease-out);
 }
 
-.brand:hover img {
+.brand:hover img,
+.footer__brand .brand:hover img {
     transform: scale(1.04);
-}
-
-.on-dark img[src*="logo"] {
-    filter: invert(74%) sepia(58%) saturate(1148%) hue-rotate(107deg) brightness(98%) contrast(93%) !important;
 }
 
 .brand__name {
